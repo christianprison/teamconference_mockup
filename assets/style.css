@@ -361,7 +361,7 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
 
 @media (max-width: 1100px) {
   .arbeitsflaeche { grid-template-columns: 1fr; }
-  .fenster__kopf, .kopfbereich { position: static; }
+  .fenster > .fenster__kopf, .spalte > .kopfbereich { position: static; }
   .arbeitsflaeche > .spalte:first-child { position: static; }
   .objektliste { max-height: 220px; }
   .kerninfo { grid-template-columns: 1fr; }
