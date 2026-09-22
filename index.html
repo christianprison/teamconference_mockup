@@ -40,7 +40,7 @@
     <!-- Objektliste ------------------------------------------------ -->
     <div class="spalte">
       <div class="objektliste" data-skizze>
-        <div class="objektliste__titel">Fälle (10): Neurologie Komplex</div>
+        <div class="objektliste__titel" id="objektliste-titel">Fälle: Neurologie Komplex</div>
         <div class="objektliste__suche">
           <span class="feld__box" data-skizze><input class="eingabe" type="text" placeholder="Suchen …" aria-label="Fallsuche"></span>
           <button type="button" class="knopf" data-skizze>Suchen</button>
@@ -91,26 +91,18 @@
       </div>
 
       <div class="reiter-leiste reiter-leiste--arbeitsplatz" role="tablist">
-        <button class="reiter" role="tab" data-reiter="uebersicht" aria-selected="false" data-skizze="reiter">Auftragsübersicht</button>
+        <button class="reiter" role="tab" data-reiter="teamkonferenz" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Team Konferenz</button>
         <button class="reiter" role="tab" data-reiter="einstufung" aria-selected="false" data-skizze="reiter">Einstufung (Neurologie)</button>
         <button class="reiter" role="tab" data-reiter="journal" aria-selected="false" data-skizze="reiter">(1) Journal</button>
         <button class="reiter" role="tab" data-reiter="scoring" aria-selected="false" data-skizze="reiter">Patientenscoring</button>
         <button class="reiter" role="tab" data-reiter="stammdaten" aria-selected="false" data-skizze="reiter">Patientenstammdaten</button>
         <button class="reiter" role="tab" data-reiter="labor" aria-selected="false" data-skizze="reiter">Laborbefunde</button>
-        <button class="reiter" role="tab" data-reiter="teamkonferenz" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Teamkonferenz</button>
       </div>
 
       <div class="formularflaeche" data-skizze>
 
-        <div data-reiterinhalt="teamkonferenz">
-          <div class="platzhalter" data-skizze="gestrichelt">
-            Formular „Teamkonferenz“ – Bedienelemente folgen nach Vorgabe
-          </div>
-        </div>
+        <div data-reiterinhalt="teamkonferenz"></div>
 
-        <div data-reiterinhalt="uebersicht" hidden>
-          <div class="platzhalter" data-skizze="gestrichelt">Auftragsübersicht – im Entwurf nicht ausgeprägt</div>
-        </div>
         <div data-reiterinhalt="einstufung" hidden>
           <div class="platzhalter" data-skizze="gestrichelt">Einstufung (Neurologie) – im Entwurf nicht ausgeprägt</div>
         </div>
@@ -137,5 +129,6 @@
 <script src="assets/sketch.js"></script>
 <script src="assets/daten.js"></script>
 <script src="assets/app.js"></script>
+<script src="assets/formular.js"></script>
 </body>
 </html>

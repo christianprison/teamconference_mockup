@@ -325,3 +325,67 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
   .objektliste { max-height: 220px; }
   .kerninfo { grid-template-columns: 1fr; }
 }
+
+/* ==================================================================
+   Kartenreiter "Team Konferenz"
+   ================================================================== */
+
+.konferenz__titel { font-size: 26px; margin-bottom: .15rem; }
+
+/* ---------- Teilnehmende ------------------------------------------ */
+
+.teilnehmer {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: .3rem 1.6rem;
+}
+.teilnehmer__eintrag { display: flex; align-items: baseline; gap: .5rem; font-size: 16px; }
+.teilnehmer__name { font-weight: 700; }
+.teilnehmer__rolle { color: var(--graphit-mittel); font-size: 15px; }
+.teilnehmer__kuerzel { margin-left: auto; color: var(--graphit-hell); font-size: 14px; }
+
+/* ---------- Patientenabschnitte (Akkordeon) ----------------------- */
+
+.patientenliste { display: flex; flex-direction: column; gap: .65rem; margin-top: 1.6rem; }
+.patient { display: block; }
+
+.patient__kopf {
+  width: 100%;
+  display: flex; align-items: baseline; gap: .7rem;
+  padding: .55rem .8rem;
+  background: transparent; border: none;
+  font-family: inherit; font-size: 17px; color: var(--graphit);
+  text-align: left; cursor: pointer;
+}
+.patient__kopf:hover { background: var(--papier-schatten); }
+.patient__kopf[aria-expanded="true"] { background: var(--papier-schatten); }
+.patient__pfeil { width: 1em; }
+.patient__name { font-weight: 700; font-size: 18px; }
+.patient__meta { color: var(--graphit-mittel); font-size: 15px; }
+.patient__stand { margin-left: auto; white-space: nowrap; }
+
+.patient__inhalt { padding: .7rem 0 .3rem; }
+.patient__inhalt[hidden] { display: none; }
+
+/* ---------- Themen-Tabelle ---------------------------------------- */
+
+table.themen { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 16px; }
+table.themen th {
+  text-align: left; font-weight: 700; font-size: 15px; color: var(--graphit-mittel);
+  padding: .4rem .7rem; border-bottom: 1.4px solid var(--graphit-hell);
+}
+table.themen th:nth-child(1), table.themen td:nth-child(1) { width: 15%; }
+table.themen th:nth-child(2), table.themen td:nth-child(2) { width: 47%; }
+table.themen th:nth-child(3), table.themen td:nth-child(3) { width: 38%; }
+table.themen td { padding: .6rem .7rem; vertical-align: top; border-bottom: 1.1px dashed var(--graphit-hell); }
+table.themen tbody tr:last-child td { border-bottom: none; }
+
+.themen__bezeichnung { font-weight: 700; }
+.themen__journal .notiz { margin: 0; }
+
+.journal-eintrag { margin-bottom: .6rem; }
+.journal-eintrag:last-child { margin-bottom: 0; }
+.journal-eintrag__kopf { display: flex; gap: .55rem; font-size: 14px; color: var(--graphit-mittel); }
+.journal-eintrag__kuerzel { letter-spacing: .04em; }
+.journal-eintrag__text { font-size: 16px; }
+
+.textfeld--entscheidung { min-height: 4.6rem; font-size: 16px; }
