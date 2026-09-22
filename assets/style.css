@@ -406,6 +406,12 @@ table.themen tbody tr:last-child td { border-bottom: none; }
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
+.sprachwahl__stand {
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  color: #0a7ec2;
+  padding-right: .3rem;
+}
+
 .sprachwahl__hinweis {
   font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
   color: #d6006e;
@@ -432,7 +438,13 @@ table.themen tbody tr:last-child td { border-bottom: none; }
 .sprachwahl__knopf:focus-visible { outline: 3px solid #ffc107; outline-offset: 2px; }
 
 @media (max-width: 760px) {
-  .sprachwahl__hinweis { display: none; }
+  .sprachwahl__stand {
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  color: #0a7ec2;
+  padding-right: .3rem;
+}
+
+.sprachwahl__hinweis { display: none; }
 }
 
 /* ---------- Schieber "Kompakt" ------------------------------------- */
@@ -448,19 +460,16 @@ table.themen tbody tr:last-child td { border-bottom: none; }
   display: inline-block;
   width: 48px; height: 23px;
 }
-.schieber__knebel {
+/* höhere Spezifität nötig, sonst greift die allgemeine Regel für
+   Kinder von [data-skizze] und macht den Knebel wieder relativ */
+.schieber__spur > .schieber__knebel {
   position: absolute;
+  display: block;
   top: 3px; left: 3px;
-  width: 17px; height: 17px;
-  border: 1.6px solid var(--graphit);
-  border-radius: 3px;
-  background: var(--papier);
+  width: 18px; height: 17px;
+  z-index: 2;
   transition: left .14s ease;
 }
-.schieber__eingabe:checked ~ .schieber__spur .schieber__knebel {
-  left: 26px;
-  background: var(--graphit-hell);
-}
-.schieber__eingabe:focus-visible ~ .schieber__spur .schieber__knebel { box-shadow: 0 0 0 3px rgba(58,55,51,.18); }
-.schieber:hover .schieber__knebel { background: var(--papier-schatten); }
-.schieber__eingabe:checked ~ .schieber__spur .schieber__knebel:hover { background: var(--graphit-hell); }
+.schieber__eingabe:checked ~ .schieber__spur > .schieber__knebel { left: 27px; }
+.schieber__eingabe:focus-visible ~ .schieber__spur { outline: 2px dashed var(--graphit-mittel); outline-offset: 3px; }
+.schieber:hover .schieber__spur { background: var(--papier-schatten); }

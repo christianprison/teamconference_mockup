@@ -64,7 +64,10 @@
       }));
     } else if (art === "schraffur") {
       knoten = rc.rectangle(2, 2, b - 4, h - 4, Object.assign({}, opt, {
-        fill: GRAPHIT_HELL, fillStyle: "hachure", fillWeight: 0.6, hachureGap: 5
+        fill: el.dataset.skizzeFarbe || GRAPHIT_HELL,
+        fillStyle: "hachure",
+        fillWeight: Number(el.dataset.skizzeStrich) || 0.6,
+        hachureGap: Number(el.dataset.skizzeAbstand) || 5
       }));
     } else if (art === "reiter") {                 // oben offener „Karteireiter“
       var d = "M2," + (h - 1) + " L2,4 L" + (b - 2) + ",4 L" + (b - 2) + "," + (h - 1);

@@ -236,7 +236,12 @@
 
     var spur = neu("span", "schieber__spur");
     spur.setAttribute("data-skizze", "");
-    spur.appendChild(neu("span", "schieber__knebel"));
+    var knebel = neu("span", "schieber__knebel");
+    knebel.setAttribute("data-skizze", "schraffur");
+    knebel.setAttribute("data-skizze-farbe", "#3a3733");
+    knebel.setAttribute("data-skizze-strich", "0.9");
+    knebel.setAttribute("data-skizze-abstand", "3");
+    spur.appendChild(knebel);
     schieber.appendChild(spur);
 
     zeile.appendChild(schieber);
