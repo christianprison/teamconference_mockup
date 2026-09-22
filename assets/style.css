@@ -210,3 +210,118 @@ table.liste tbody tr:hover { background: var(--papier-schatten); }
   .kopfleiste { flex-wrap: wrap; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ==================================================================
+   Arbeitsplatz-Gerüst (Fenster, Objektliste, Kerninfo, Kartenreiter)
+   ================================================================== */
+
+body.arbeitsplatz { padding: 0; height: 100vh; overflow: hidden; }
+
+.fenster {
+  display: flex; flex-direction: column;
+  height: 100vh;
+  margin: 10px;
+  height: calc(100vh - 20px);
+  background: var(--papier);
+}
+
+.fenster__titel {
+  display: flex; align-items: center; gap: .6rem;
+  padding: .35rem .8rem;
+  font-size: 15px;
+  border-bottom: 1.2px dashed var(--graphit-hell);
+}
+.fenster__titel-text { font-weight: 700; }
+.fenster__knoepfe { margin-left: auto; display: flex; gap: .55rem; color: var(--graphit-mittel); }
+
+.menueleiste {
+  display: flex; gap: 1.1rem;
+  padding: .3rem .8rem;
+  font-size: 15px; color: var(--graphit-mittel);
+}
+.menueleiste span { cursor: default; }
+.menueleiste span:hover { color: var(--graphit); }
+
+.werkzeugleiste {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .35rem .8rem .5rem;
+  border-bottom: 1.2px dashed var(--graphit-hell);
+}
+.werkzeug { width: 22px; height: 20px; display: inline-block; }
+.werkzeug-trenner { width: 1px; height: 20px; border-left: 1.2px dashed var(--graphit-hell); margin: 0 .25rem; }
+.werkzeugleiste .feld__box { width: 210px; }
+.werkzeugleiste .feld__box--schmal { width: 120px; }
+
+/* ---------- Arbeitsfläche ----------------------------------------- */
+
+.arbeitsflaeche {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: .7rem;
+  padding: .7rem .8rem .8rem;
+  min-height: 0;
+}
+
+.spalte { display: flex; flex-direction: column; min-height: 0; min-width: 0; gap: .6rem; }
+
+/* ---------- Objektliste ------------------------------------------- */
+
+.objektliste { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: .5rem .55rem; }
+.objektliste__titel { font-weight: 700; font-size: 16px; margin-bottom: .4rem; }
+.objektliste__suche { display: flex; align-items: center; gap: .4rem; margin-bottom: .5rem; }
+.objektliste__suche .feld__box { flex: 1; }
+.objektliste__rollflaeche { flex: 1; overflow: auto; min-height: 0; }
+
+table.fallliste { width: 100%; border-collapse: collapse; font-size: 15px; }
+table.fallliste th {
+  position: sticky; top: 0;
+  background: var(--papier);
+  text-align: left; font-weight: 700; font-size: 14px; color: var(--graphit-mittel);
+  padding: .25rem .4rem;
+  border-bottom: 1.3px solid var(--graphit-hell);
+}
+table.fallliste td { padding: .3rem .4rem; border-bottom: 1.1px dashed var(--graphit-hell); }
+table.fallliste tbody tr { cursor: pointer; }
+table.fallliste tbody tr:hover { background: var(--papier-schatten); }
+table.fallliste tbody tr[aria-selected="true"] { background: var(--papier-schatten); font-weight: 700; }
+table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relative; }
+
+/* ---------- Kerninfo ---------------------------------------------- */
+
+.kerninfo-kopf {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .3rem .6rem;
+  font-size: 15px;
+  background: var(--papier-schatten);
+}
+.kerninfo-kopf__text { font-weight: 700; }
+.kerninfo-kopf__rechts { margin-left: auto; display: flex; align-items: center; gap: .5rem; color: var(--graphit-mittel); }
+
+.kerninfo {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.3fr;
+  gap: .6rem;
+  padding: .55rem;
+}
+.kerninfo__block { padding: .45rem .6rem; min-height: 96px; }
+.kerninfo__titel { font-weight: 700; font-size: 15px; margin-bottom: .3rem; }
+.kerninfo__zeile { font-size: 15px; display: flex; gap: .4rem; }
+.kerninfo__zeile dt { color: var(--graphit-mittel); margin: 0; }
+.kerninfo__zeile dd { margin: 0; }
+.kerninfo__warnung { color: var(--graphit); font-size: 15px; display: flex; gap: .4rem; }
+.kerninfo__warnung::before { content: "!"; font-weight: 700; }
+
+/* ---------- Formularfläche ---------------------------------------- */
+
+.formularflaeche { flex: 1; min-height: 0; overflow: auto; padding: .8rem .9rem 1rem; }
+.formularflaeche .platzhalter { min-height: 220px; }
+
+.reiter-leiste--arbeitsplatz { margin-bottom: 0; overflow-x: auto; padding-bottom: 2px; }
+.reiter-leiste--arbeitsplatz .reiter { white-space: nowrap; font-size: 15px; padding: .35rem .75rem; }
+
+@media (max-width: 1100px) {
+  .arbeitsflaeche { grid-template-columns: 1fr; }
+  .objektliste { max-height: 220px; }
+  .kerninfo { grid-template-columns: 1fr; }
+}
