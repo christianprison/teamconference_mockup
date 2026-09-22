@@ -49,10 +49,6 @@
     var f = faelle[aktuell];
     if (!f) { return; }
 
-    text(el("ki-kopfzeile"),
-      f.geboren + "  " + f.nachname + " " + f.vorname + "  " + f.fallart + "  " +
-      f.fallnummer + "  " + f.beginn);
-
     var warnungen = el("ki-kennzeichen");
     warnungen.innerHTML = "";
     if (!f.kennzeichen.length) {
