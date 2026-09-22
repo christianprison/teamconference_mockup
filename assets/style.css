@@ -394,3 +394,42 @@ table.themen tbody tr:last-child td { border-bottom: none; }
 .journal-eintrag__text { font-size: 16px; }
 
 .textfeld--entscheidung { min-height: 4.6rem; font-size: 16px; }
+
+/* ==================================================================
+   Sprachumschalter – bewusst bunt: gehört nicht zum Designentwurf
+   ================================================================== */
+
+.sprachwahl {
+  margin-left: auto;
+  display: flex; align-items: center; gap: .45rem;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.sprachwahl__hinweis {
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  color: #d6006e;
+}
+
+.sprachwahl__knopf {
+  font: inherit; font-size: 13px; font-weight: 700; letter-spacing: .04em;
+  padding: .22rem .75rem;
+  border: 2px solid #0a7ec2;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0a7ec2;
+  cursor: pointer;
+  transition: transform .08s, box-shadow .12s;
+}
+.sprachwahl__knopf:hover { box-shadow: 0 0 0 3px rgba(10,126,194,.18); }
+.sprachwahl__knopf:active { transform: translateY(1px); }
+.sprachwahl__knopf[aria-pressed="true"] {
+  border-color: #d6006e;
+  background: linear-gradient(90deg, #d6006e, #ff8a3d);
+  color: #ffffff;
+  box-shadow: 0 1px 4px rgba(214,0,110,.35);
+}
+.sprachwahl__knopf:focus-visible { outline: 3px solid #ffc107; outline-offset: 2px; }
+
+@media (max-width: 760px) {
+  .sprachwahl__hinweis { display: none; }
+}

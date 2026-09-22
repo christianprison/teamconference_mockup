@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Arbeitsplatz – Teamkonferenz (Designentwurf)</title>
+<title>Arbeitsplatz – Team Konferenz (Designentwurf)</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body class="arbeitsplatz">
@@ -11,20 +11,20 @@
 <div class="fenster" data-skizze data-skizze-kraeftig>
 
   <div class="fenster__titel">
-    <span class="fenster__titel-text">Arztarbeitsplatz</span>
-    <span class="notiz" style="margin:0">[Station / Arbeitsplatzkontext]</span>
+    <span class="fenster__titel-text" data-i18n="fenster.titel">Arztarbeitsplatz</span>
+    <span class="notiz" style="margin:0" data-i18n="fenster.kontext">[Station / Arbeitsplatzkontext]</span>
     <span class="fenster__knoepfe"><span>–</span><span>▢</span><span>✕</span></span>
   </div>
 
   <nav class="menueleiste">
-    <span>Datei</span><span>Bearbeiten</span><span>Ansicht</span><span>Gehe zu</span>
-    <span>Einfügen</span><span>Extras</span><span>EMail</span><span>Info</span>
+    <span data-i18n="menue.datei">Datei</span><span data-i18n="menue.bearbeiten">Bearbeiten</span><span data-i18n="menue.ansicht">Ansicht</span><span data-i18n="menue.geheZu">Gehe zu</span>
+    <span data-i18n="menue.einfuegen">Einfügen</span><span data-i18n="menue.extras">Extras</span><span data-i18n="menue.email">EMail</span><span data-i18n="menue.info">Info</span>
   </nav>
 
   <div class="werkzeugleiste">
-    <span class="feld__box" data-skizze><input class="eingabe" type="text" value="Stationsarzt Neurologie" aria-label="Arbeitsplatz"></span>
-    <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" value="&lt;Alle&gt;" aria-label="Filter 1"></span>
-    <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" value="&lt;Alle&gt;" aria-label="Filter 2"></span>
+    <span class="feld__box" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.arbeitsplatz" aria-label="Arbeitsplatz"></span>
+    <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.filter" aria-label="Filter 1"></span>
+    <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.filter" aria-label="Filter 2"></span>
     <span class="werkzeug-trenner"></span>
     <span class="werkzeug" data-skizze></span>
     <span class="werkzeug" data-skizze></span>
@@ -32,7 +32,11 @@
     <span class="werkzeug-trenner"></span>
     <span class="werkzeug" data-skizze></span>
     <span class="werkzeug" data-skizze></span>
-    <span class="notiz" style="margin:0 0 0 auto">Symbolleiste – im Entwurf nicht ausgeprägt</span>
+    <div class="sprachwahl">
+      <span class="sprachwahl__hinweis" data-i18n="sprache.hinweis">Nur für den Entwurf: Sprache</span>
+      <button type="button" class="sprachwahl__knopf" data-sprache="de" aria-pressed="true">DE</button>
+      <button type="button" class="sprachwahl__knopf" data-sprache="en" aria-pressed="false">EN</button>
+    </div>
   </div>
 
   <div class="arbeitsflaeche">
@@ -42,13 +46,13 @@
       <div class="objektliste" data-skizze>
         <div class="objektliste__titel" id="objektliste-titel">Fälle: Neurologie Komplex</div>
         <div class="objektliste__suche">
-          <span class="feld__box" data-skizze><input class="eingabe" type="text" placeholder="Suchen …" aria-label="Fallsuche"></span>
-          <button type="button" class="knopf" data-skizze>Suchen</button>
+          <span class="feld__box" data-skizze><input class="eingabe" type="text" data-i18n-platzhalter="liste.suche" aria-label="Fallsuche"></span>
+          <button type="button" class="knopf" data-skizze data-i18n="liste.suchknopf">Suchen</button>
         </div>
         <div class="objektliste__rollflaeche">
           <table class="fallliste">
             <thead>
-              <tr><th>Ta</th><th>geb.</th><th>Name</th><th>Vorname</th></tr>
+              <tr><th data-i18n="liste.spalte.ta">Ta</th><th data-i18n="liste.spalte.geb">geb.</th><th data-i18n="liste.spalte.name">Name</th><th data-i18n="liste.spalte.vorname">Vorname</th></tr>
             </thead>
             <tbody id="fallliste-koerper"></tbody>
           </table>
@@ -61,37 +65,37 @@
 
       <div class="kerninfo">
         <div class="kerninfo__block" data-skizze>
-          <div class="kerninfo__titel">Alarm-/Pflegekennz.</div>
+          <div class="kerninfo__titel" data-i18n="kerninfo.alarm">Alarm-/Pflegekennz.</div>
           <div id="ki-kennzeichen"></div>
         </div>
         <div class="kerninfo__block" data-skizze>
-          <div class="kerninfo__titel">Basic Kerninfo</div>
+          <div class="kerninfo__titel" data-i18n="kerninfo.basic">Basic Kerninfo</div>
           <div class="kerninfo__felder">
-          <dl class="kerninfo__zeile"><dt>Fallnummer:</dt><dd id="ki-fallnummer"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Geburtsdatum:</dt><dd id="ki-geburtsdatum"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Angehörige(r):</dt><dd id="ki-angehoerige"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Telefon:</dt><dd id="ki-telefon"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallnummer">Fallnummer:</dt><dd id="ki-fallnummer"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.geburtsdatum">Geburtsdatum:</dt><dd id="ki-geburtsdatum"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.angehoerige">Angehörige(r):</dt><dd id="ki-angehoerige"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.telefon">Telefon:</dt><dd id="ki-telefon"></dd></dl>
           </div>
         </div>
         <div class="kerninfo__block" data-skizze>
-          <div class="kerninfo__titel">akt. Fallinfo</div>
+          <div class="kerninfo__titel" data-i18n="kerninfo.fallinfo">akt. Fallinfo</div>
           <div class="kerninfo__felder">
-          <dl class="kerninfo__zeile"><dt>Fall-Nr.:</dt><dd id="ki-fallnr"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Fallart:</dt><dd id="ki-fallart"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Zimmer:</dt><dd id="ki-zimmer"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Beginn:</dt><dd id="ki-beginn"></dd></dl>
-          <dl class="kerninfo__zeile"><dt>Ende:</dt><dd id="ki-ende"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallnr">Fall-Nr.:</dt><dd id="ki-fallnr"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallart">Fallart:</dt><dd id="ki-fallart"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.zimmer">Zimmer:</dt><dd id="ki-zimmer"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.beginn">Beginn:</dt><dd id="ki-beginn"></dd></dl>
+          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.ende">Ende:</dt><dd id="ki-ende"></dd></dl>
           </div>
         </div>
       </div>
 
       <div class="reiter-leiste reiter-leiste--arbeitsplatz" role="tablist">
-        <button class="reiter" role="tab" data-reiter="teamkonferenz" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Team Konferenz</button>
-        <button class="reiter" role="tab" data-reiter="einstufung" aria-selected="false" data-skizze="reiter">Einstufung (Neurologie)</button>
-        <button class="reiter" role="tab" data-reiter="journal" aria-selected="false" data-skizze="reiter">(1) Journal</button>
-        <button class="reiter" role="tab" data-reiter="scoring" aria-selected="false" data-skizze="reiter">Patientenscoring</button>
-        <button class="reiter" role="tab" data-reiter="stammdaten" aria-selected="false" data-skizze="reiter">Patientenstammdaten</button>
-        <button class="reiter" role="tab" data-reiter="labor" aria-selected="false" data-skizze="reiter">Laborbefunde</button>
+        <button class="reiter" role="tab" data-reiter="teamkonferenz" data-i18n="reiter.teamkonferenz" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Team Konferenz</button>
+        <button class="reiter" role="tab" data-reiter="einstufung" data-i18n="reiter.einstufung" aria-selected="false" data-skizze="reiter">Einstufung (Neurologie)</button>
+        <button class="reiter" role="tab" data-reiter="journal" data-i18n="reiter.journal" aria-selected="false" data-skizze="reiter">(1) Journal</button>
+        <button class="reiter" role="tab" data-reiter="scoring" data-i18n="reiter.scoring" aria-selected="false" data-skizze="reiter">Patientenscoring</button>
+        <button class="reiter" role="tab" data-reiter="stammdaten" data-i18n="reiter.stammdaten" aria-selected="false" data-skizze="reiter">Patientenstammdaten</button>
+        <button class="reiter" role="tab" data-reiter="labor" data-i18n="reiter.labor" aria-selected="false" data-skizze="reiter">Laborbefunde</button>
       </div>
 
       <div class="formularflaeche" data-skizze>
@@ -99,19 +103,19 @@
         <div data-reiterinhalt="teamkonferenz"></div>
 
         <div data-reiterinhalt="einstufung" hidden>
-          <div class="platzhalter" data-skizze="gestrichelt">Einstufung (Neurologie) – im Entwurf nicht ausgeprägt</div>
+          <div class="platzhalter" data-skizze="gestrichelt" data-platzhalter-reiter="reiter.einstufung"></div>
         </div>
         <div data-reiterinhalt="journal" hidden>
-          <div class="platzhalter" data-skizze="gestrichelt">Journal – im Entwurf nicht ausgeprägt</div>
+          <div class="platzhalter" data-skizze="gestrichelt" data-platzhalter-reiter="reiter.journal"></div>
         </div>
         <div data-reiterinhalt="scoring" hidden>
-          <div class="platzhalter" data-skizze="gestrichelt">Patientenscoring – im Entwurf nicht ausgeprägt</div>
+          <div class="platzhalter" data-skizze="gestrichelt" data-platzhalter-reiter="reiter.scoring"></div>
         </div>
         <div data-reiterinhalt="stammdaten" hidden>
-          <div class="platzhalter" data-skizze="gestrichelt">Patientenstammdaten – im Entwurf nicht ausgeprägt</div>
+          <div class="platzhalter" data-skizze="gestrichelt" data-platzhalter-reiter="reiter.stammdaten"></div>
         </div>
         <div data-reiterinhalt="labor" hidden>
-          <div class="platzhalter" data-skizze="gestrichelt">Laborbefunde – im Entwurf nicht ausgeprägt</div>
+          <div class="platzhalter" data-skizze="gestrichelt" data-platzhalter-reiter="reiter.labor"></div>
         </div>
 
       </div>
@@ -120,6 +124,7 @@
   </div>
 </div>
 
+<script src="assets/i18n.js"></script>
 <script src="assets/vendor/rough.js"></script>
 <script src="assets/sketch.js"></script>
 <script src="assets/daten.js"></script>

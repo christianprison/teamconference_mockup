@@ -4,6 +4,12 @@ Prototyp eines Formulars zur Erfassung von Teamkonferenzen in einem
 Krankenhaus-Informationssystem. Bewusst im Stil einer Bleistiftzeichnung
 gehalten: der Entwurf zeigt Struktur und Feldlogik, nicht das finale Design.
 
+## Sprachen
+
+Deutsch und Englisch, umschaltbar über die farbigen Schaltflächen DE / EN
+rechts in der Symbolleiste. Der Umschalter ist bewusst bunt gehalten: er
+gehört nicht zum Designentwurf.
+
 ## Stand
 
 * `index.html` – Stilmuster mit allen Bausteinen (Kopfleiste, Patientenbanner,
@@ -14,6 +20,7 @@ gehalten: der Entwurf zeigt Struktur und Feldlogik, nicht das finale Design.
 
 Statische Seite ohne Build-Schritt, lauffähig über GitHub Pages.
 
+* `assets/i18n.js` – Sprachumschaltung Deutsch / Englisch
 * `assets/style.css` – Layout und Skizzen-Optik
 * `assets/sketch.js` – zeichnet Rahmen, Linien und Kreise handgezeichnet
 * `assets/vendor/rough.js` – [Rough.js](https://roughjs.com) 4.6.6 (MIT)
