@@ -4,7 +4,8 @@
    Aufbau: Überschrift mit Konferenzdatum, Teilnehmende, allgemeines
    Freitextfeld, danach je Patient ein aufklappbarer Abschnitt mit der
    Tabelle Thema / Journaleinträge / Entscheidung. Es ist immer nur ein
-   Patient geöffnet; die Auswahl ist mit der Fallliste gekoppelt.
+   Patient geöffnet. Das Formular ist bewusst unabhängig vom in der
+   Objektliste gewählten Fall.
    ------------------------------------------------------------------ */
 (function () {
   "use strict";
@@ -190,7 +191,7 @@
 
   /* ---------- Auf- und Zuklappen ----------------------------------- */
 
-  function oeffnen(i, stumm) {
+  function oeffnen(i) {
     offen = i;
     var abschnitte = document.querySelectorAll(".patient");
 
@@ -202,7 +203,6 @@
     });
 
     if (window.Skizze) { window.Skizze.neu(); }
-    if (!stumm) { document.dispatchEvent(new CustomEvent("patient:geoeffnet", { detail: i })); }
   }
 
   /* ---------- Aufbau ----------------------------------------------- */
@@ -237,12 +237,6 @@
 
     if (window.Skizze) { window.Skizze.neu(); }
   }
-
-  /* Fallwechsel in der Objektliste öffnet den passenden Abschnitt */
-  document.addEventListener("fall:gewechselt", function (e) {
-    var i = faelle.indexOf(e.detail);
-    if (i >= 0 && i !== offen) { oeffnen(i, true); }
-  });
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", aufbauen);

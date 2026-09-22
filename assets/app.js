@@ -108,11 +108,6 @@
 
   /* ---------- Start ------------------------------------------------ */
 
-  /* Aufgeklappter Patient im Formular markiert den Fall in der Liste */
-  document.addEventListener("patient:geoeffnet", function (e) {
-    auswaehlen(e.detail, true);
-  });
-
   function start() {
     var titel = el("objektliste-titel");
     if (titel) { titel.textContent = "Fälle (" + faelle.length + "): Neurologie Komplex"; }
