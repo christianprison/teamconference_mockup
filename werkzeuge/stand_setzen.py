@@ -9,11 +9,13 @@ Stand läuft. Aufruf vor dem Commit:  python3 werkzeuge/stand_setzen.py
 import datetime
 import pathlib
 import re
+import zoneinfo
 
-# Der Build läuft auf UTC, die Projektzeit liegt zwei Stunden davor.
-ZEITVERSATZ = datetime.timedelta(hours=2)
+# Die Buildumgebung läuft auf UTC; der Stempel soll die Projektzeit zeigen.
+# zoneinfo berücksichtigt Sommer- und Winterzeit automatisch.
+ZEITZONE = zoneinfo.ZoneInfo("Europe/Berlin")
 
-STEMPEL = (datetime.datetime.now() + ZEITVERSATZ).strftime("%Y-%m-%d %H:%M")
+STEMPEL = datetime.datetime.now(tz=ZEITZONE).strftime("%Y-%m-%d %H:%M")
 KURZ = STEMPEL.replace("-", "").replace(" ", "").replace(":", "")
 
 for datei in pathlib.Path(__file__).resolve().parent.parent.glob("*.html"):
