@@ -10,7 +10,10 @@ import datetime
 import pathlib
 import re
 
-STEMPEL = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+# Der Build läuft auf UTC, die Projektzeit liegt zwei Stunden davor.
+ZEITVERSATZ = datetime.timedelta(hours=2)
+
+STEMPEL = (datetime.datetime.now() + ZEITVERSATZ).strftime("%Y-%m-%d %H:%M")
 KURZ = STEMPEL.replace("-", "").replace(" ", "").replace(":", "")
 
 for datei in pathlib.Path(__file__).resolve().parent.parent.glob("*.html"):

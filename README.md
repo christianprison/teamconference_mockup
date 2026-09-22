@@ -31,7 +31,8 @@ Lokal ansehen: Datei `index.html` im Browser öffnen oder
 
 ## Versionsstempel
 
-Vor jedem Commit `python3 werkzeuge/stand_setzen.py` ausführen. Das Skript
+Vor jedem Commit `python3 werkzeuge/stand_setzen.py` ausführen. Der Stempel
+entsteht aus der Serverzeit plus zwei Stunden (`ZEITVERSATZ` im Skript). Das Skript
 hängt an alle CSS-/JS-Verweise ein `?v=<zeitstempel>` an und schreibt den
 Stand sichtbar in die Symbolleiste. Damit lädt der Browser nach einem
 Deployment die neuen Dateien, und man erkennt auf der Seite, welcher Stand
