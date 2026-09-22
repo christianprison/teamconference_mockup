@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teamkonferenz – Stilmuster (Designentwurf)</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="blatt">
+
+  <span class="entwurfs-hinweis" data-skizze="gestrichelt">Designentwurf – Skizzenstand, noch nicht ausgeprägt</span>
+
+  <h1>Stilmuster: Bleistift-Wireframe</h1>
+  <p class="notiz">Baukasten für den klickbaren Prototyp „Teamkonferenz erfassen“. Die Bausteine sind bedienbar, die Inhalte sind Platzhalter.</p>
+
+  <div class="trennstrich" data-skizze="linie"></div>
+
+  <h2>Kopfleiste &amp; Patientenkontext</h2>
+
+  <div class="kopfleiste" data-skizze>
+    <span class="kopfleiste__titel">KIS</span>
+    <span class="kopfleiste__pfad">Station B3 › Patientenakte › Teamkonferenz</span>
+    <span class="kopfleiste__rechts">
+      <span class="merker" data-skizze="gestrichelt">angemeldet: Dr. Muster</span>
+      <button type="button" class="knopf" data-skizze>Abmelden</button>
+    </span>
+  </div>
+
+  <div class="patientenbanner" data-skizze data-skizze-kraeftig>
+    <span class="patientenbanner__name">Musterfrau, Erika</span>
+    <dl><dt>geb.</dt><dd>14.03.1958</dd></dl>
+    <dl><dt>Fall-Nr.</dt><dd>2026-004711</dd></dl>
+    <dl><dt>Station</dt><dd>B3 / Zi. 214</dd></dl>
+    <dl><dt>Aufnahme</dt><dd>09.09.2026</dd></dl>
+  </div>
+
+  <h2>Reiter</h2>
+  <div class="reiter-leiste" role="tablist">
+    <button class="reiter" role="tab" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Konferenz</button>
+    <button class="reiter" role="tab" aria-selected="false" data-skizze="reiter">Teilnehmer</button>
+    <button class="reiter" role="tab" aria-selected="false" data-skizze="reiter">Ziele &amp; Maßnahmen</button>
+    <button class="reiter" role="tab" aria-selected="false" data-skizze="reiter">Dokumente</button>
+  </div>
+
+  <section class="feldgruppe" data-skizze>
+    <div class="feldgruppe__titel">Formularelemente</div>
+
+    <div class="raster">
+      <div class="feld sp-4">
+        <label class="feld__beschriftung" for="m1">Textfeld <span class="pflicht">*</span></label>
+        <span class="feld__box" data-skizze><input class="eingabe" id="m1" type="text" placeholder="Eingabe …"></span>
+      </div>
+
+      <div class="feld sp-4">
+        <label class="feld__beschriftung" for="m2">Datum</label>
+        <span class="feld__box" data-skizze><input class="eingabe" id="m2" type="date"></span>
+      </div>
+
+      <div class="feld sp-4">
+        <label class="feld__beschriftung" for="m3">Uhrzeit</label>
+        <span class="feld__box" data-skizze><input class="eingabe" id="m3" type="time"></span>
+      </div>
+
+      <div class="feld sp-6">
+        <label class="feld__beschriftung" for="m4">Auswahlliste</label>
+        <span class="feld__box" data-skizze>
+          <select class="auswahl" id="m4">
+            <option>– bitte wählen –</option>
+            <option>Eintrag A</option>
+            <option>Eintrag B</option>
+          </select>
+        </span>
+      </div>
+
+      <div class="feld sp-6">
+        <label class="feld__beschriftung" for="m4b">Feld im Unterstrich-Stil</label>
+        <span class="feld__box" data-skizze="linie"><input class="eingabe" id="m4b" type="text" placeholder="Eingabe …"></span>
+      </div>
+
+      <div class="feld sp-6">
+        <span class="feld__beschriftung">Mehrfachauswahl</span>
+        <div class="wahl-liste">
+          <label class="wahl"><input type="checkbox" checked><span class="wahl__kasten" data-skizze><span class="wahl__haken">✓</span></span>Ärztlicher Dienst</label>
+          <label class="wahl"><input type="checkbox"><span class="wahl__kasten" data-skizze><span class="wahl__haken">✓</span></span>Pflege</label>
+          <label class="wahl"><input type="checkbox"><span class="wahl__kasten" data-skizze><span class="wahl__haken">✓</span></span>Therapie</label>
+        </div>
+      </div>
+
+      <div class="feld sp-6">
+        <span class="feld__beschriftung">Einfachauswahl</span>
+        <div class="wahl-liste">
+          <label class="wahl wahl--rund"><input type="radio" name="m5" checked><span class="wahl__kasten" data-skizze="kreis"><span class="wahl__haken">•</span></span>geplant</label>
+          <label class="wahl wahl--rund"><input type="radio" name="m5"><span class="wahl__kasten" data-skizze="kreis"><span class="wahl__haken">•</span></span>durchgeführt</label>
+          <label class="wahl wahl--rund"><input type="radio" name="m5"><span class="wahl__kasten" data-skizze="kreis"><span class="wahl__haken">•</span></span>abgesagt</label>
+        </div>
+      </div>
+
+      <div class="feld sp-12">
+        <label class="feld__beschriftung" for="m6">Mehrzeiliger Text</label>
+        <span class="feld__box" data-skizze><textarea class="textfeld" id="m6" placeholder="Freitext …"></textarea></span>
+      </div>
+
+      <div class="feld sp-12">
+        <span class="feld__beschriftung">Platzhalter für noch offene Bereiche</span>
+        <div class="platzhalter" data-skizze="gestrichelt">Inhalt folgt – hier kommt z. B. die Teilnehmerauswahl hin</div>
+      </div>
+    </div>
+
+    <div class="knopf-zeile">
+      <button type="button" class="knopf knopf--haupt" data-skizze data-skizze-kraeftig>Speichern</button>
+      <button type="button" class="knopf" data-skizze>Zwischenspeichern</button>
+      <span class="knopf-zeile__rechts">
+        <button type="button" class="knopf knopf--still" data-skizze="gestrichelt">Abbrechen</button>
+      </span>
+    </div>
+  </section>
+
+  <h2>Übersichtsliste</h2>
+  <div class="tabelle-huelle" data-skizze>
+    <table class="liste">
+      <thead>
+        <tr><th>Datum</th><th>Art</th><th>Teilnehmer</th><th>Status</th><th>Dokumentiert von</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>18.09.2026</td><td>Teamkonferenz</td><td>5</td><td>durchgeführt</td><td>Dr. Muster</td></tr>
+        <tr><td>11.09.2026</td><td>Aufnahmekonferenz</td><td>4</td><td>durchgeführt</td><td>Pfl. Schmidt</td></tr>
+        <tr><td>25.09.2026</td><td>Teamkonferenz</td><td>–</td><td>geplant</td><td>–</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hinweis-kasten" data-skizze="gestrichelt" style="margin-top:1.2rem">
+    Skizzenoptik heißt bewusst: keine finalen Farben, Abstände oder Schriftgrößen. Struktur und Feldlogik stehen im Vordergrund.
+  </div>
+
+</div>
+
+<script src="assets/vendor/rough.js"></script>
+<script src="assets/sketch.js"></script>
+</body>
+</html>

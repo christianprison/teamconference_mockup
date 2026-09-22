@@ -1,0 +1,212 @@
+/* ------------------------------------------------------------------
+   Stilmuster "Bleistiftzeichnung" – Designentwurf, keine finale UI.
+   Rahmen werden von assets/sketch.js (Rough.js) gezeichnet; das CSS
+   liefert nur den Fallback, falls kein JavaScript läuft.
+   ------------------------------------------------------------------ */
+
+@font-face {
+  font-family: "Kalam";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/kalam-400-latin.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Kalam";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/kalam-700-latin.woff2") format("woff2");
+}
+
+:root {
+  --graphit:        #3a3733;
+  --graphit-mittel: #6f6a63;
+  --graphit-hell:   #a9a29a;
+  --papier:         #fcfbf8;
+  --papier-schatten:#f2f0ea;
+  --schrift-hand:   "Kalam", "Comic Sans MS", cursive;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 0 4rem;
+  background-color: var(--papier);
+  background-image:
+    linear-gradient(rgba(58,55,51,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58,55,51,.05) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px;
+  color: var(--graphit);
+  font-family: var(--schrift-hand);
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+/* ---------- Skizzen-Ebene ----------------------------------------- */
+
+.skizze-ebene {
+  position: absolute;
+  top: 0; left: 0;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+[data-skizze] { position: relative; }
+[data-skizze] > *:not(.skizze-ebene) { position: relative; z-index: 1; }
+
+/* Fallback ohne JavaScript: schlichte Rahmen */
+html:not(.hat-skizze) [data-skizze] { border: 1.3px solid var(--graphit); border-radius: 3px; }
+html:not(.hat-skizze) [data-skizze="linie"] { border: none; border-bottom: 1.3px solid var(--graphit); }
+html:not(.hat-skizze) [data-skizze="kreis"] { border-radius: 50%; }
+html:not(.hat-skizze) [data-skizze="gestrichelt"] { border-style: dashed; border-color: var(--graphit-hell); }
+
+/* ---------- Seitengerüst ------------------------------------------ */
+
+.blatt { max-width: 1120px; margin: 0 auto; padding: 1.5rem 1.25rem; }
+
+.entwurfs-hinweis {
+  display: inline-block;
+  transform: rotate(-1.4deg);
+  padding: .4rem 1rem;
+  margin-bottom: 1.3rem;
+  color: var(--graphit-mittel);
+  font-size: 15px;
+}
+
+h1, h2, h3 { font-weight: 700; margin: 0 0 .5rem; line-height: 1.3; }
+h1 { font-size: 31px; }
+h2 { font-size: 23px; margin-top: 2.2rem; }
+h3 { font-size: 18px; }
+
+.notiz { color: var(--graphit-mittel); font-size: 15px; margin: .1rem 0 1rem; }
+.trennstrich { height: 8px; margin: 1rem 0 1.4rem; }
+
+/* ---------- Kopfleiste & Patientenkontext ------------------------- */
+
+.kopfleiste {
+  display: flex; align-items: center; gap: .9rem;
+  padding: .6rem .95rem; margin-bottom: .9rem;
+  background: var(--papier-schatten);
+}
+.kopfleiste__titel { font-weight: 700; font-size: 19px; }
+.kopfleiste__pfad  { color: var(--graphit-mittel); font-size: 15px; }
+.kopfleiste__rechts { margin-left: auto; display: flex; gap: .6rem; align-items: center; }
+
+.patientenbanner {
+  display: flex; flex-wrap: wrap; gap: .35rem 1.7rem;
+  padding: .65rem .95rem; margin-bottom: 1.2rem;
+}
+.patientenbanner__name { font-weight: 700; font-size: 19px; width: 100%; }
+.patientenbanner dl { display: flex; gap: .4rem; margin: 0; font-size: 15px; }
+.patientenbanner dt { color: var(--graphit-mittel); }
+.patientenbanner dd { margin: 0; }
+
+/* ---------- Reiter ------------------------------------------------ */
+
+.reiter-leiste { display: flex; gap: .45rem; flex-wrap: wrap; margin-bottom: .9rem; }
+.reiter {
+  padding: .45rem 1rem;
+  background: transparent; color: var(--graphit-mittel);
+  font-family: inherit; font-size: 16px; border: none; cursor: pointer;
+}
+.reiter[aria-selected="true"] { color: var(--graphit); font-weight: 700; }
+
+/* ---------- Formular ---------------------------------------------- */
+
+.feldgruppe { padding: 1rem 1.15rem 1.3rem; margin-bottom: 1.4rem; }
+.feldgruppe__titel { font-size: 18px; font-weight: 700; margin-bottom: .85rem; }
+
+.raster { display: grid; gap: .95rem 1.25rem; grid-template-columns: repeat(12, 1fr); }
+.sp-3 { grid-column: span 3; }
+.sp-4 { grid-column: span 4; }
+.sp-6 { grid-column: span 6; }
+.sp-8 { grid-column: span 8; }
+.sp-12 { grid-column: span 12; }
+
+.feld { display: flex; flex-direction: column; gap: .25rem; }
+.feld__beschriftung { font-size: 15px; color: var(--graphit-mittel); }
+.feld__beschriftung .pflicht { color: var(--graphit); font-weight: 700; }
+.feld__box { display: block; }
+
+.eingabe, .auswahl, .textfeld {
+  width: 100%;
+  padding: .42rem .6rem;
+  background: transparent; border: none; color: var(--graphit);
+  font-family: inherit; font-size: 17px;
+}
+.textfeld { min-height: 5.5rem; resize: vertical; display: block; }
+.eingabe:focus, .auswahl:focus, .textfeld:focus { outline: none; }
+.feld__box:focus-within { background: var(--papier-schatten); }
+
+.auswahl {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--graphit-mittel) 50%),
+                    linear-gradient(135deg, var(--graphit-mittel) 50%, transparent 50%);
+  background-position: calc(100% - 17px) 1.08em, calc(100% - 12px) 1.08em;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 2rem;
+}
+
+/* Auswahlkästchen und Optionsfelder */
+.wahl-liste { display: flex; flex-wrap: wrap; gap: .55rem 1.5rem; padding-top: .25rem; }
+.wahl { display: inline-flex; align-items: center; gap: .5rem; cursor: pointer; font-size: 16px; }
+.wahl input { position: absolute; opacity: 0; pointer-events: none; }
+
+.wahl__kasten { display: inline-block; width: 20px; height: 20px; flex: 0 0 20px; }
+.wahl__haken {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; font-weight: 700; line-height: 1;
+  opacity: 0; transform: rotate(-8deg) scale(.6);
+  transition: opacity .12s, transform .12s;
+  z-index: 2;
+}
+.wahl input:checked ~ .wahl__kasten .wahl__haken { opacity: 1; transform: rotate(-8deg) scale(1); }
+.wahl--rund .wahl__haken { font-size: 26px; transform: scale(.5); }
+.wahl--rund input:checked ~ .wahl__kasten .wahl__haken { transform: scale(1); }
+
+/* ---------- Schaltflächen ----------------------------------------- */
+
+.knopf {
+  padding: .45rem 1.2rem;
+  background: transparent; color: var(--graphit);
+  font-family: inherit; font-size: 16px; border: none; cursor: pointer;
+}
+.knopf:hover { background: var(--papier-schatten); }
+.knopf:active { transform: translateY(1px); }
+.knopf--haupt { font-weight: 700; }
+.knopf--still { color: var(--graphit-mittel); }
+.knopf-zeile { display: flex; gap: .65rem; flex-wrap: wrap; align-items: center; margin-top: 1.25rem; }
+.knopf-zeile__rechts { margin-left: auto; }
+
+/* ---------- Tabelle ----------------------------------------------- */
+
+.tabelle-huelle { padding: .35rem; }
+table.liste { width: 100%; border-collapse: collapse; font-size: 16px; }
+table.liste th, table.liste td { padding: .48rem .7rem; text-align: left; }
+table.liste th { font-weight: 700; color: var(--graphit-mittel); font-size: 15px; }
+table.liste thead tr { border-bottom: 1.4px solid var(--graphit-hell); }
+table.liste tbody tr { border-bottom: 1.1px dashed var(--graphit-hell); }
+table.liste tbody tr:last-child { border-bottom: none; }
+table.liste tbody tr:hover { background: var(--papier-schatten); }
+
+/* ---------- Kleinteile -------------------------------------------- */
+
+.merker { display: inline-block; padding: .18rem .6rem; font-size: 14px; color: var(--graphit-mittel); }
+.platzhalter {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 92px; padding: .9rem;
+  color: var(--graphit-hell); font-size: 15px; text-align: center;
+}
+.hinweis-kasten { padding: .75rem .95rem; font-size: 15px; color: var(--graphit-mittel); }
+
+@media (max-width: 760px) {
+  .sp-3, .sp-4, .sp-6, .sp-8 { grid-column: span 12; }
+  body { font-size: 16px; }
+  .kopfleiste { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
