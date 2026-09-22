@@ -215,13 +215,14 @@ table.liste tbody tr:hover { background: var(--papier-schatten); }
    Arbeitsplatz-Gerüst (Fenster, Objektliste, Kerninfo, Kartenreiter)
    ================================================================== */
 
-body.arbeitsplatz { padding: 0; height: 100vh; overflow: hidden; }
+/* Die Seite scrollt als Ganzes: so wächst und schrumpft der Rahmen der
+   Formularfläche mit ihrem Inhalt, statt ihn beim Scrollen zu überlagern. */
+body.arbeitsplatz { padding: 0; }
 
 .fenster {
   display: flex; flex-direction: column;
-  height: 100vh;
+  min-height: calc(100vh - 20px);
   margin: 10px;
-  height: calc(100vh - 20px);
   background: var(--papier);
 }
 
@@ -258,16 +259,26 @@ body.arbeitsplatz { padding: 0; height: 100vh; overflow: hidden; }
   flex: 1;
   display: grid;
   grid-template-columns: 330px 1fr;
+  align-items: start;
   gap: .7rem;
   padding: .7rem .8rem .8rem;
-  min-height: 0;
 }
 
-.spalte { display: flex; flex-direction: column; min-height: 0; min-width: 0; gap: .6rem; }
+.spalte { display: flex; flex-direction: column; min-width: 0; gap: .6rem; }
 
 /* ---------- Objektliste ------------------------------------------- */
 
-.objektliste { flex: 1; display: flex; flex-direction: column; min-height: 0; padding: .5rem .55rem; }
+/* Fallliste bleibt beim Scrollen stehen und behält ihre eigene Rollfläche */
+.arbeitsflaeche > .spalte:first-child {
+  position: sticky;
+  top: 10px;
+  align-self: start;
+}
+.objektliste {
+  display: flex; flex-direction: column;
+  max-height: calc(100vh - 40px);
+  padding: .5rem .55rem;
+}
 .objektliste__titel { font-weight: 700; font-size: 16px; margin-bottom: .4rem; }
 .objektliste__suche { display: flex; align-items: center; gap: .4rem; margin-bottom: .5rem; }
 .objektliste__suche .feld__box { flex: 1; }
@@ -319,7 +330,7 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
 
 /* ---------- Formularfläche ---------------------------------------- */
 
-.formularflaeche { flex: 1; min-height: 0; overflow: auto; padding: .8rem .9rem 1rem; }
+.formularflaeche { padding: .8rem .9rem 1rem; }
 .formularflaeche .platzhalter { min-height: 220px; }
 
 .reiter-leiste--arbeitsplatz { margin-bottom: 0; overflow-x: auto; padding-bottom: 2px; }
@@ -327,6 +338,7 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
 
 @media (max-width: 1100px) {
   .arbeitsflaeche { grid-template-columns: 1fr; }
+  .arbeitsflaeche > .spalte:first-child { position: static; }
   .objektliste { max-height: 220px; }
   .kerninfo { grid-template-columns: 1fr; }
 }
