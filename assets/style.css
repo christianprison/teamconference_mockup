@@ -268,15 +268,38 @@ body.arbeitsplatz { padding: 0; }
 
 /* ---------- Objektliste ------------------------------------------- */
 
+/* ---------- Fixierte Kopfbereiche ---------------------------------
+   Fensterleiste, Menü und Symbolleiste bleiben oben stehen, darunter
+   Kerninfo und Kartenreiter. --kopfhoehe wird in app.js gesetzt.      */
+
+/* Spezifität nötig: sonst setzt die allgemeine Regel für Kinder von
+   [data-skizze] die Positionierung wieder auf relative zurück. */
+.fenster > .fenster__kopf {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0 5px;          /* lässt den gezeichneten Fensterrahmen frei */
+  background: var(--papier);
+}
+
+.kopfbereich {
+  position: sticky;
+  top: var(--kopfhoehe, 110px);
+  z-index: 10;
+  padding-bottom: .45rem;
+  background: var(--papier);
+}
+.kopfbereich .reiter-leiste--arbeitsplatz { margin-bottom: 0; }
+
 /* Fallliste bleibt beim Scrollen stehen und behält ihre eigene Rollfläche */
 .arbeitsflaeche > .spalte:first-child {
   position: sticky;
-  top: 10px;
+  top: calc(var(--kopfhoehe, 110px) + 8px);
   align-self: start;
 }
 .objektliste {
   display: flex; flex-direction: column;
-  max-height: calc(100vh - 40px);
+  max-height: calc(100vh - var(--kopfhoehe, 110px) - 30px);
   padding: .5rem .55rem;
 }
 .objektliste__titel { font-weight: 700; font-size: 16px; margin-bottom: .4rem; }
@@ -338,6 +361,7 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
 
 @media (max-width: 1100px) {
   .arbeitsflaeche { grid-template-columns: 1fr; }
+  .fenster__kopf, .kopfbereich { position: static; }
   .arbeitsflaeche > .spalte:first-child { position: static; }
   .objektliste { max-height: 220px; }
   .kerninfo { grid-template-columns: 1fr; }

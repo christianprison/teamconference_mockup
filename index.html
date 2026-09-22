@@ -5,39 +5,41 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="cache-control" content="no-cache">
 <title>Arbeitsplatz – Team Konferenz (Designentwurf)</title>
-<link rel="stylesheet" href="assets/style.css?v=202609221347">
+<link rel="stylesheet" href="assets/style.css?v=202609221349">
 </head>
 <body class="arbeitsplatz">
 
 <div class="fenster" data-skizze data-skizze-kraeftig>
 
-  <div class="fenster__titel">
-    <span class="fenster__titel-text" data-i18n="fenster.titel">Arztarbeitsplatz</span>
-    <span class="notiz" style="margin:0" data-i18n="fenster.kontext">[Station / Arbeitsplatzkontext]</span>
-    <span class="fenster__knoepfe"><span>–</span><span>▢</span><span>✕</span></span>
-  </div>
+  <div class="fenster__kopf">
+    <div class="fenster__titel">
+      <span class="fenster__titel-text" data-i18n="fenster.titel">Arztarbeitsplatz</span>
+      <span class="notiz" style="margin:0" data-i18n="fenster.kontext">[Station / Arbeitsplatzkontext]</span>
+      <span class="fenster__knoepfe"><span>–</span><span>▢</span><span>✕</span></span>
+    </div>
 
-  <nav class="menueleiste">
-    <span data-i18n="menue.datei">Datei</span><span data-i18n="menue.bearbeiten">Bearbeiten</span><span data-i18n="menue.ansicht">Ansicht</span><span data-i18n="menue.geheZu">Gehe zu</span>
-    <span data-i18n="menue.einfuegen">Einfügen</span><span data-i18n="menue.extras">Extras</span><span data-i18n="menue.email">EMail</span><span data-i18n="menue.info">Info</span>
-  </nav>
+    <nav class="menueleiste">
+      <span data-i18n="menue.datei">Datei</span><span data-i18n="menue.bearbeiten">Bearbeiten</span><span data-i18n="menue.ansicht">Ansicht</span><span data-i18n="menue.geheZu">Gehe zu</span>
+      <span data-i18n="menue.einfuegen">Einfügen</span><span data-i18n="menue.extras">Extras</span><span data-i18n="menue.email">EMail</span><span data-i18n="menue.info">Info</span>
+    </nav>
 
-  <div class="werkzeugleiste">
-    <span class="feld__box" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.arbeitsplatz" aria-label="Arbeitsplatz"></span>
-    <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.filter" aria-label="Filter 1"></span>
-    <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.filter" aria-label="Filter 2"></span>
-    <span class="werkzeug-trenner"></span>
-    <span class="werkzeug" data-skizze></span>
-    <span class="werkzeug" data-skizze></span>
-    <span class="werkzeug" data-skizze></span>
-    <span class="werkzeug-trenner"></span>
-    <span class="werkzeug" data-skizze></span>
-    <span class="werkzeug" data-skizze></span>
-    <div class="sprachwahl">
-      <span class="sprachwahl__stand">Stand <span id="stand">2026-09-22 13:47</span></span>
-      <span class="sprachwahl__hinweis" data-i18n="sprache.hinweis">Nur für den Entwurf: Sprache</span>
-      <button type="button" class="sprachwahl__knopf" data-sprache="de" aria-pressed="true">DE</button>
-      <button type="button" class="sprachwahl__knopf" data-sprache="en" aria-pressed="false">EN</button>
+    <div class="werkzeugleiste">
+      <span class="feld__box" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.arbeitsplatz" aria-label="Arbeitsplatz"></span>
+      <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.filter" aria-label="Filter 1"></span>
+      <span class="feld__box feld__box--schmal" data-skizze><input class="eingabe" type="text" data-i18n-wert="werkzeug.filter" aria-label="Filter 2"></span>
+      <span class="werkzeug-trenner"></span>
+      <span class="werkzeug" data-skizze></span>
+      <span class="werkzeug" data-skizze></span>
+      <span class="werkzeug" data-skizze></span>
+      <span class="werkzeug-trenner"></span>
+      <span class="werkzeug" data-skizze></span>
+      <span class="werkzeug" data-skizze></span>
+      <div class="sprachwahl">
+        <span class="sprachwahl__stand">Stand <span id="stand">2026-09-22 13:49</span></span>
+        <span class="sprachwahl__hinweis" data-i18n="sprache.hinweis">Nur für den Entwurf: Sprache</span>
+        <button type="button" class="sprachwahl__knopf" data-sprache="de" aria-pressed="true">DE</button>
+        <button type="button" class="sprachwahl__knopf" data-sprache="en" aria-pressed="false">EN</button>
+      </div>
     </div>
   </div>
 
@@ -65,39 +67,41 @@
     <!-- Kerninfo + Kartenreiter ------------------------------------ -->
     <div class="spalte">
 
-      <div class="kerninfo">
-        <div class="kerninfo__block" data-skizze>
-          <div class="kerninfo__titel" data-i18n="kerninfo.alarm">Alarm-/Pflegekennz.</div>
-          <div id="ki-kennzeichen"></div>
-        </div>
-        <div class="kerninfo__block" data-skizze>
-          <div class="kerninfo__titel" data-i18n="kerninfo.basic">Basic Kerninfo</div>
-          <div class="kerninfo__felder">
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallnummer">Fallnummer:</dt><dd id="ki-fallnummer"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.geburtsdatum">Geburtsdatum:</dt><dd id="ki-geburtsdatum"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.angehoerige">Angehörige(r):</dt><dd id="ki-angehoerige"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.telefon">Telefon:</dt><dd id="ki-telefon"></dd></dl>
+      <div class="kopfbereich">
+        <div class="kerninfo">
+          <div class="kerninfo__block" data-skizze>
+            <div class="kerninfo__titel" data-i18n="kerninfo.alarm">Alarm-/Pflegekennz.</div>
+            <div id="ki-kennzeichen"></div>
+          </div>
+          <div class="kerninfo__block" data-skizze>
+            <div class="kerninfo__titel" data-i18n="kerninfo.basic">Basic Kerninfo</div>
+            <div class="kerninfo__felder">
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallnummer">Fallnummer:</dt><dd id="ki-fallnummer"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.geburtsdatum">Geburtsdatum:</dt><dd id="ki-geburtsdatum"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.angehoerige">Angehörige(r):</dt><dd id="ki-angehoerige"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.telefon">Telefon:</dt><dd id="ki-telefon"></dd></dl>
+            </div>
+          </div>
+          <div class="kerninfo__block" data-skizze>
+            <div class="kerninfo__titel" data-i18n="kerninfo.fallinfo">akt. Fallinfo</div>
+            <div class="kerninfo__felder">
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallnr">Fall-Nr.:</dt><dd id="ki-fallnr"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallart">Fallart:</dt><dd id="ki-fallart"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.zimmer">Zimmer:</dt><dd id="ki-zimmer"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.beginn">Beginn:</dt><dd id="ki-beginn"></dd></dl>
+            <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.ende">Ende:</dt><dd id="ki-ende"></dd></dl>
+            </div>
           </div>
         </div>
-        <div class="kerninfo__block" data-skizze>
-          <div class="kerninfo__titel" data-i18n="kerninfo.fallinfo">akt. Fallinfo</div>
-          <div class="kerninfo__felder">
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallnr">Fall-Nr.:</dt><dd id="ki-fallnr"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.fallart">Fallart:</dt><dd id="ki-fallart"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.zimmer">Zimmer:</dt><dd id="ki-zimmer"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.beginn">Beginn:</dt><dd id="ki-beginn"></dd></dl>
-          <dl class="kerninfo__zeile"><dt data-i18n="kerninfo.ende">Ende:</dt><dd id="ki-ende"></dd></dl>
-          </div>
-        </div>
-      </div>
 
-      <div class="reiter-leiste reiter-leiste--arbeitsplatz" role="tablist">
-        <button class="reiter" role="tab" data-reiter="teamkonferenz" data-i18n="reiter.teamkonferenz" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Team Konferenz</button>
-        <button class="reiter" role="tab" data-reiter="einstufung" data-i18n="reiter.einstufung" aria-selected="false" data-skizze="reiter">Einstufung (Neurologie)</button>
-        <button class="reiter" role="tab" data-reiter="journal" data-i18n="reiter.journal" aria-selected="false" data-skizze="reiter">(1) Journal</button>
-        <button class="reiter" role="tab" data-reiter="scoring" data-i18n="reiter.scoring" aria-selected="false" data-skizze="reiter">Patientenscoring</button>
-        <button class="reiter" role="tab" data-reiter="stammdaten" data-i18n="reiter.stammdaten" aria-selected="false" data-skizze="reiter">Patientenstammdaten</button>
-        <button class="reiter" role="tab" data-reiter="labor" data-i18n="reiter.labor" aria-selected="false" data-skizze="reiter">Laborbefunde</button>
+        <div class="reiter-leiste reiter-leiste--arbeitsplatz" role="tablist">
+          <button class="reiter" role="tab" data-reiter="teamkonferenz" data-i18n="reiter.teamkonferenz" aria-selected="true" data-skizze="reiter" data-skizze-kraeftig>Team Konferenz</button>
+          <button class="reiter" role="tab" data-reiter="einstufung" data-i18n="reiter.einstufung" aria-selected="false" data-skizze="reiter">Einstufung (Neurologie)</button>
+          <button class="reiter" role="tab" data-reiter="journal" data-i18n="reiter.journal" aria-selected="false" data-skizze="reiter">(1) Journal</button>
+          <button class="reiter" role="tab" data-reiter="scoring" data-i18n="reiter.scoring" aria-selected="false" data-skizze="reiter">Patientenscoring</button>
+          <button class="reiter" role="tab" data-reiter="stammdaten" data-i18n="reiter.stammdaten" aria-selected="false" data-skizze="reiter">Patientenstammdaten</button>
+          <button class="reiter" role="tab" data-reiter="labor" data-i18n="reiter.labor" aria-selected="false" data-skizze="reiter">Laborbefunde</button>
+        </div>
       </div>
 
       <div class="formularflaeche" data-skizze>
@@ -126,11 +130,11 @@
   </div>
 </div>
 
-<script src="assets/i18n.js?v=202609221347"></script>
-<script src="assets/vendor/rough.js?v=202609221347"></script>
-<script src="assets/sketch.js?v=202609221347"></script>
-<script src="assets/daten.js?v=202609221347"></script>
-<script src="assets/app.js?v=202609221347"></script>
-<script src="assets/formular.js?v=202609221347"></script>
+<script src="assets/i18n.js?v=202609221349"></script>
+<script src="assets/vendor/rough.js?v=202609221349"></script>
+<script src="assets/sketch.js?v=202609221349"></script>
+<script src="assets/daten.js?v=202609221349"></script>
+<script src="assets/app.js?v=202609221349"></script>
+<script src="assets/formular.js?v=202609221349"></script>
 </body>
 </html>

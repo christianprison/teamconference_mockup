@@ -113,9 +113,19 @@
     });
   }
 
+  /* ---------- Höhe des fixierten Fensterkopfs ---------------------- */
+
+  function kopfhoeheSetzen() {
+    var kopf = document.querySelector(".fenster__kopf");
+    if (!kopf) { return; }
+    document.documentElement.style.setProperty("--kopfhoehe", Math.round(kopf.offsetHeight) + "px");
+  }
+
   /* ---------- Start ------------------------------------------------ */
 
   function start() {
+    kopfhoeheSetzen();
+    window.addEventListener("resize", kopfhoeheSetzen);
     beschriftungenZeichnen();
     listeZeichnen();
     kerninfoZeichnen();
@@ -124,6 +134,7 @@
   }
 
   document.addEventListener("sprache:gewechselt", function () {
+    kopfhoeheSetzen();
     beschriftungenZeichnen();
     listeZeichnen();
     kerninfoZeichnen();
