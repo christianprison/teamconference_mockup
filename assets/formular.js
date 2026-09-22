@@ -3,8 +3,8 @@
 
    Aufbau: Überschrift mit Konferenzdatum, Teilnehmende, allgemeines
    Freitextfeld, danach je Patient ein aufklappbarer Abschnitt mit der
-   Tabelle Thema / Journaleinträge / Entscheidung. Es ist immer nur ein
-   Patient geöffnet. Das Formular ist bewusst unabhängig vom in der
+   Tabelle Thema / Journaleinträge / Entscheidung. Es ist höchstens ein
+   Patient geöffnet; ein erneuter Klick klappt ihn wieder ein. Das Formular ist bewusst unabhängig vom in der
    Objektliste gewählten Fall.
    ------------------------------------------------------------------ */
 (function () {
@@ -172,7 +172,6 @@
     kopf.setAttribute("data-skizze", "");
     kopf.setAttribute("aria-expanded", String(i === offen));
 
-    kopf.appendChild(neu("span", "patient__pfeil", i === offen ? "▾" : "▸"));
     kopf.appendChild(neu("span", "patient__name", fall.nachname + ", " + fall.vorname));
     kopf.appendChild(neu("span", "patient__meta",
       t("patient.fallnr", { nr: fall.fallnummer, geb: dat(fall.geboren), zimmer: fall.zimmer })));
@@ -182,7 +181,10 @@
     zaehler.setAttribute("data-skizze", "gestrichelt");
     kopf.appendChild(zaehler);
 
-    kopf.addEventListener("click", function () { oeffnen(i); });
+    /* Auf- und Zuklappen: Pfeil rechts, wie in iMedOne üblich */
+    kopf.appendChild(neu("span", "patient__pfeil", i === offen ? "▾" : "▸"));
+
+    kopf.addEventListener("click", function () { umschalten(i); });
     abschnitt.appendChild(kopf);
 
     var inhalt = neu("div", "patient__inhalt");
@@ -195,12 +197,12 @@
 
   /* ---------- Auf- und Zuklappen ----------------------------------- */
 
-  function oeffnen(i) {
-    offen = i;
+  function umschalten(i) {
+    offen = (offen === i) ? -1 : i;
     var abschnitte = document.querySelectorAll(".patient");
 
     abschnitte.forEach(function (abschnitt, nr) {
-      var auf = nr === i;
+      var auf = nr === offen;
       abschnitt.querySelector(".patient__kopf").setAttribute("aria-expanded", String(auf));
       abschnitt.querySelector(".patient__pfeil").textContent = auf ? "▾" : "▸";
       abschnitt.querySelector(".patient__inhalt").hidden = !auf;

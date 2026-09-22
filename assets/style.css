@@ -363,10 +363,11 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
 }
 .patient__kopf:hover { background: var(--papier-schatten); }
 .patient__kopf[aria-expanded="true"] { background: var(--papier-schatten); }
-.patient__pfeil { width: 1em; }
+.patient__pfeil { width: 1em; margin-left: .7rem; text-align: right; color: var(--graphit-mittel); }
 .patient__name { font-weight: 700; font-size: 18px; }
 .patient__meta { color: var(--graphit-mittel); font-size: 15px; }
 .patient__stand { margin-left: auto; white-space: nowrap; }
+.patient__kopf[aria-expanded="true"] .patient__pfeil { color: var(--graphit); }
 
 .patient__inhalt { padding: .7rem 0 .3rem; }
 .patient__inhalt[hidden] { display: none; }
