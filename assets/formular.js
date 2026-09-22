@@ -3,8 +3,8 @@
 
    Aufbau: Überschrift mit Konferenzdatum, Teilnehmende, allgemeines
    Freitextfeld, danach je Patient ein aufklappbarer Abschnitt mit der
-   Tabelle Thema / Journaleinträge / Entscheidung. Es ist höchstens ein
-   Patient geöffnet; ein erneuter Klick klappt ihn wieder ein. Das Formular ist bewusst unabhängig vom in der
+   Tabelle Thema / Journaleinträge / Entscheidung. Mehrere Abschnitte
+   können gleichzeitig offen sein; der Schieber "Kompakt" klappt alle zu. Das Formular ist bewusst unabhängig vom in der
    Objektliste gewählten Fall.
    ------------------------------------------------------------------ */
 (function () {
@@ -13,7 +13,7 @@
   var K       = window.KONFERENZ;
   var faelle  = window.FAELLE || [];
   var SPEICHER = "teamkonferenz.entwurf";
-  var offen   = 0;
+  var offen   = new Set([0]);   /* Indizes der aufgeklappten Abschnitte */
 
   function t(k, w) { return window.I18N ? window.I18N.t(k, w) : k; }
   function tx(w)   { return window.I18N ? window.I18N.tx(w) : w; }
@@ -170,8 +170,9 @@
     var kopf = neu("button", "patient__kopf");
     kopf.type = "button";
     kopf.setAttribute("data-skizze", "");
-    kopf.setAttribute("aria-expanded", String(i === offen));
+    kopf.setAttribute("aria-expanded", String(offen.has(i)));
 
+    kopf.appendChild(neu("span", "patient__pfeil", offen.has(i) ? "▾" : "▸"));
     kopf.appendChild(neu("span", "patient__name", fall.nachname + ", " + fall.vorname));
     kopf.appendChild(neu("span", "patient__meta",
       t("patient.fallnr", { nr: fall.fallnummer, geb: dat(fall.geboren), zimmer: fall.zimmer })));
@@ -181,14 +182,11 @@
     zaehler.setAttribute("data-skizze", "gestrichelt");
     kopf.appendChild(zaehler);
 
-    /* Auf- und Zuklappen: Pfeil rechts, wie in iMedOne üblich */
-    kopf.appendChild(neu("span", "patient__pfeil", i === offen ? "▾" : "▸"));
-
     kopf.addEventListener("click", function () { umschalten(i); });
     abschnitt.appendChild(kopf);
 
     var inhalt = neu("div", "patient__inhalt");
-    inhalt.hidden = i !== offen;
+    inhalt.hidden = !offen.has(i);
     inhalt.appendChild(themenTabelle(fall));
     abschnitt.appendChild(inhalt);
 
@@ -198,17 +196,51 @@
   /* ---------- Auf- und Zuklappen ----------------------------------- */
 
   function umschalten(i) {
-    offen = (offen === i) ? -1 : i;
-    var abschnitte = document.querySelectorAll(".patient");
+    if (offen.has(i)) { offen.delete(i); } else { offen.add(i); }
+    abschnitteAktualisieren();
+  }
 
-    abschnitte.forEach(function (abschnitt, nr) {
-      var auf = nr === offen;
+  function alleZuklappen(zu) {
+    offen = zu ? new Set() : new Set(faelle.map(function (_, i) { return i; }));
+    abschnitteAktualisieren();
+  }
+
+  function abschnitteAktualisieren() {
+    document.querySelectorAll(".patient").forEach(function (abschnitt, nr) {
+      var auf = offen.has(nr);
       abschnitt.querySelector(".patient__kopf").setAttribute("aria-expanded", String(auf));
       abschnitt.querySelector(".patient__pfeil").textContent = auf ? "▾" : "▸";
       abschnitt.querySelector(".patient__inhalt").hidden = !auf;
     });
 
+    var schalter = document.querySelector(".schieber__eingabe");
+    if (schalter) { schalter.checked = offen.size === 0; }
+
     if (window.Skizze) { window.Skizze.neu(); }
+  }
+
+  /* ---------- Schieber "Kompakt" ------------------------------------ */
+
+  function kompaktSchieber() {
+    var zeile = neu("div", "werkzeugzeile");
+
+    var schieber = neu("label", "schieber");
+    schieber.appendChild(neu("span", "schieber__text", t("konferenz.kompakt")));
+
+    var eingabe = document.createElement("input");
+    eingabe.type = "checkbox";
+    eingabe.className = "schieber__eingabe";
+    eingabe.checked = offen.size === 0;
+    eingabe.addEventListener("change", function () { alleZuklappen(eingabe.checked); });
+    schieber.appendChild(eingabe);
+
+    var spur = neu("span", "schieber__spur");
+    spur.setAttribute("data-skizze", "");
+    spur.appendChild(neu("span", "schieber__knebel"));
+    schieber.appendChild(spur);
+
+    zeile.appendChild(schieber);
+    return zeile;
   }
 
   /* ---------- Aufbau ----------------------------------------------- */
@@ -218,6 +250,8 @@
     if (!ziel) { return; }
     ziel.innerHTML = "";
     ziel.appendChild(kopfbereich());
+
+    ziel.appendChild(kompaktSchieber());
 
     var patienten = neu("div", "patientenliste");
     faelle.forEach(function (fall, i) { patienten.appendChild(patientAbschnitt(fall, i)); });

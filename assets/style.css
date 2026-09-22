@@ -363,7 +363,7 @@ table.fallliste tbody tr[aria-selected="true"] td:first-child { position: relati
 }
 .patient__kopf:hover { background: var(--papier-schatten); }
 .patient__kopf[aria-expanded="true"] { background: var(--papier-schatten); }
-.patient__pfeil { width: 1em; margin-left: .7rem; text-align: right; color: var(--graphit-mittel); }
+.patient__pfeil { width: 1em; color: var(--graphit-mittel); }
 .patient__name { font-weight: 700; font-size: 18px; }
 .patient__meta { color: var(--graphit-mittel); font-size: 15px; }
 .patient__stand { margin-left: auto; white-space: nowrap; }
@@ -434,3 +434,33 @@ table.themen tbody tr:last-child td { border-bottom: none; }
 @media (max-width: 760px) {
   .sprachwahl__hinweis { display: none; }
 }
+
+/* ---------- Schieber "Kompakt" ------------------------------------- */
+
+.werkzeugzeile { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+
+.schieber { display: inline-flex; align-items: center; gap: .55rem; cursor: pointer; }
+.schieber__text { font-size: 16px; color: var(--graphit-mittel); }
+.schieber__eingabe { position: absolute; opacity: 0; pointer-events: none; }
+
+.schieber__spur {
+  position: relative;
+  display: inline-block;
+  width: 48px; height: 23px;
+}
+.schieber__knebel {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 17px; height: 17px;
+  border: 1.6px solid var(--graphit);
+  border-radius: 3px;
+  background: var(--papier);
+  transition: left .14s ease;
+}
+.schieber__eingabe:checked ~ .schieber__spur .schieber__knebel {
+  left: 26px;
+  background: var(--graphit-hell);
+}
+.schieber__eingabe:focus-visible ~ .schieber__spur .schieber__knebel { box-shadow: 0 0 0 3px rgba(58,55,51,.18); }
+.schieber:hover .schieber__knebel { background: var(--papier-schatten); }
+.schieber__eingabe:checked ~ .schieber__spur .schieber__knebel:hover { background: var(--graphit-hell); }
